@@ -1,0 +1,32 @@
+<form>
+	<% if action == :new %>
+		<% message = "Create a band "%>
+		<% action_url = bands_url %>
+	<% else %>
+		<% message = "Edit band "%>
+		<% action_url = band_url %>
+	<% end %>
+	
+	<h1><%= message %></h1>
+
+	<form action="<%= action_url %>" method="POST">
+	    <% if action == :edit %>
+	       <input type="hidden" name="_method" value="put">
+	     <% end %>
+		<input
+		   name="authenticity_token"
+		   type="hidden"
+		   value="<%= form_authenticity_token %>">
+	   
+	   <label 
+		   for="band_name">
+		   Name
+	   </label>
+	   <input type="text" 
+		   name="band[name]" 
+		   id="band_name">
+	   <br />
+   
+	   <input type="submit" value="submit">
+	</form>
+</form>

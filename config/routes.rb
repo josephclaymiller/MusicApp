@@ -1,6 +1,18 @@
 MusicApp::Application.routes.draw do
   resources :users
   resource :session, :except => [:edit, :update, :show]
+  
+  resources :bands do
+    member do
+      resources :albums, :only => [:index, :new, :create]
+    end
+  end
+  resources :albums, :only => [:show, :edit, :update, :destroy] do
+    member do
+      resources :tracks, :only => [:index, :new, :create]
+    end
+  end
+  resources :tracks, :only => [:show, :edit, :update, :destroy]
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
