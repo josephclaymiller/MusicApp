@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   
   before_validation :ensure_session_token
   
+  validates :email, :uniqueness => true
   validates :email, :session_token, :presence => true
   validates :password_digest, :presence => { :message => "Password can't be blank" }
   validates :password, :length => { :minimum => 5, :allow_nil => true }

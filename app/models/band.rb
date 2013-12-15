@@ -1,6 +1,8 @@
 class Band < ActiveRecord::Base
   attr_accessible :name
   
+  validates :name, :uniqueness => true
+  
   has_many(
     :albums,
     :primary_key => :id,

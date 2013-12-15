@@ -3,9 +3,11 @@
 	<ul>
 	<% @bands.each do |band| %>
 		<li>
-		  <%= band.name %>
+			<%= link_to(band.name, band_url(band)) %>
 		</li>
 	<% end %>
 	</ul>
 <% end %>
+
+<%= link_to("Create new band", new_band_url) %>
 
