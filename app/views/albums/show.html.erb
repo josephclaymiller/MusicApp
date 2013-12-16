@@ -1,0 +1,9 @@
+<% if @album.nil? %>
+	<p> No album <%= params[:id] %>. </p>
+<% else %>
+	<h1><%= @album.title %></h1>
+	by
+	<%= link_to(@band.name, band_url(@band)) %>
+	<br />
+	<%= link_to("Edit album", edit_album_url(@album)) %>
+<% end %>

@@ -1,6 +1,8 @@
 class Album < ActiveRecord::Base
   attr_accessible :title, :band_id
   
+  validates :title, :band_id, :presence => true
+  
   belongs_to(
     :band,
     :primary_key => :id,

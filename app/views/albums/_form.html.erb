@@ -1,0 +1,30 @@
+<% if action == :new %>
+	<% message = "Create an album"%>
+	<% action_url = albums_url %>
+<% else %>
+	<% message = "Edit album #{album.title}"%>
+	<% action_url = album_url %>
+<% end %>
+
+<h1><%= message %></h1>
+
+<form action="<%= action_url %>" method="POST">
+    <% if action == :edit %>
+       <input type="hidden" name="_method" value="put">
+     <% end %>
+	<input
+	   name="authenticity_token"
+	   type="hidden"
+	   value="<%= form_authenticity_token %>">
+   
+   <label 
+	   for="album_title">
+	   Title
+   </label>
+   <input type="text" 
+	   name="album[title]" 
+	   id="album_title">
+   <br />
+
+   <input type="submit" value="submit">
+</form>

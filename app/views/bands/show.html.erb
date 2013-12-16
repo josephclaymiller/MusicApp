@@ -1,8 +1,15 @@
 <% if @band.nil? %>
 	<p> No band <%= params[:id] %>. </p>
 <% else %>
-	<h1>Band <%= @band.id %> </h1>
-	<p> <%= @band.name %> </p>
-	<%= link_to("Edit band", edit_band_url) %>
+	<h1> <%= @band.name %> </h1>
+
+	<%= link_to("Albums", albums_url) %>
+	<br />
+	<br />
+	
+	<%= link_to("Edit band", edit_band_url(@band)) %>
 	<%= button_to("Remove band", band_url, :method => :delete) %>
 <% end %>
+
+<br />
+<%= link_to("Bands", bands_url) %>
